@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://xh24bj7vyc42"]
+[gd_scene load_steps=7 format=3 uid="uid://xh24bj7vyc42"]
 
 [ext_resource type="PackedScene" uid="uid://c6rslwmxfavxo" path="res://level/model/level.glb" id="1_0nlc8"]
+[ext_resource type="PackedScene" uid="uid://ckkwdoj7vpe0d" path="res://enemy/enemy.tscn" id="2_xg7sp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3sk8d"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,4 +35,6 @@ shadow_enabled = true
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_j2cmj")
 
-[node name="level" parent="NavigationRegion3D" instance=ExtResource("1_0nlc8")]
+[node name="LevelModel" parent="NavigationRegion3D" instance=ExtResource("1_0nlc8")]
+
+[node name="Enemy" parent="." instance=ExtResource("2_xg7sp")]

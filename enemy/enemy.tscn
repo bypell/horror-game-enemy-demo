@@ -1,0 +1,80 @@
+[gd_scene load_steps=15 format=3 uid="uid://ckkwdoj7vpe0d"]
+
+[ext_resource type="PackedScene" uid="uid://6er8hmhuf52" path="res://enemy/model/superdupercreepyhumanoidwow.glb" id="1_x8owx"]
+[ext_resource type="Script" path="res://state_machine/state_machine.gd" id="2_1h0du"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qjb43"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pa7dw"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kq3nf"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1u101"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5glfg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kmfpw"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a65d6"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_drwql"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cay6h"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nuqa6"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y0idj"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uk74e"]
+states/End/position = Vector2(579, 95)
+states/Idle/node = SubResource("AnimationNodeAnimation_pa7dw")
+states/Idle/position = Vector2(325, 100)
+states/Run/node = SubResource("AnimationNodeAnimation_kq3nf")
+states/Run/position = Vector2(430, -21)
+states/Walk/node = SubResource("AnimationNodeAnimation_1u101")
+states/Walk/position = Vector2(430, 206)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5glfg"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_kmfpw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_a65d6"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_drwql"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_cay6h"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_nuqa6"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_y0idj")]
+graph_offset = Vector2(-60, -27)
+
+[node name="Enemy" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_qjb43")
+
+[node name="EnemyModel" parent="." instance=ExtResource("1_x8owx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21652, 0)
+
+[node name="Skeleton3D" parent="EnemyModel/Armature" index="0"]
+bones/2/rotation = Quaternion(6.30291e-09, 3.17072e-08, -0.0528214, 0.998604)
+bones/4/rotation = Quaternion(6.30291e-09, -3.17072e-08, 0.0528214, 0.998604)
+bones/5/rotation = Quaternion(0.707107, 0, 0.707107, 0)
+bones/6/rotation = Quaternion(-5.09772e-10, 5.19975e-12, 0.0116608, 0.999932)
+bones/7/rotation = Quaternion(-1.76095e-07, -2.15234e-07, -0.692058, 0.721842)
+bones/8/rotation = Quaternion(0.707107, 0, -0.707107, 0)
+bones/9/rotation = Quaternion(-5.09772e-10, -5.19975e-12, -0.0116608, 0.999932)
+bones/10/rotation = Quaternion(-1.76095e-07, 2.15234e-07, 0.692058, 0.721842)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/../EnemyModel")
+tree_root = SubResource("AnimationNodeStateMachine_uk74e")
+anim_player = NodePath("../EnemyModel/AnimationPlayer")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_1h0du")
+
+[editable path="EnemyModel"]
