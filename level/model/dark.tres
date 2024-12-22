@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dbov1cc7v2tos"]
+
+[ext_resource type="Texture2D" uid="uid://4m3vbowvamhv" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_w5t5u"]
+
+[resource]
+albedo_texture = ExtResource("1_w5t5u")
+uv1_triplanar = true
