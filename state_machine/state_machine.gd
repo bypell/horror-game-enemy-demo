@@ -9,7 +9,7 @@ class_name StateMachine extends Node
 
 func _ready() -> void:
 	for state_node: State in find_children("*", "State"):
-		state_node.wanted_transition_to_other_state.connect(_transition_to_next_state)
+		state_node.requested_transition_to_other_state.connect(_transition_to_next_state)
 
 	await owner.ready
 	state.enter("")

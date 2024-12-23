@@ -1,6 +1,6 @@
 class_name State extends Node
 
-signal wanted_transition_to_other_state(next_state_path: String, data: Dictionary)
+signal requested_transition_to_other_state(next_state_name: String, data: Dictionary)
 
 
 func enter(previous_state_name: String, data := {}) -> void:
