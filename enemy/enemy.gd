@@ -13,6 +13,7 @@ var _current_speed := 0.0
 @onready var _eye: Node3D = %Eye
 @onready var _eye_ray_cast: RayCast3D = %EyeRayCast
 
+
 func _ready() -> void:
 	set_physics_process(false)
 	await get_tree().physics_frame
@@ -24,18 +25,16 @@ func _physics_process(_delta: float) -> void:
 		animation_player.play("Idle", 0.2)
 		return
 	
-	var direction = Vector3.ZERO
-	direction = navigation_agent.get_next_path_position() - global_position
-	direction.y = 0.0
-	direction = direction.normalized()
-	
-	var where_to_look = navigation_agent.get_next_path_position()
+	var where_to_look := navigation_agent.get_next_path_position()
 	where_to_look.y = global_position.y
 	if not where_to_look.is_equal_approx(global_position):
 		# if you want interpolation, look into quaternions and slerp()
 		# using look_at for simplicity
 		look_at(where_to_look)
-		
+	
+	var direction := navigation_agent.get_next_path_position() - global_position
+	direction.y = 0.0
+	direction = direction.normalized()
 	velocity = direction * _current_speed
 	move_and_slide()
 
