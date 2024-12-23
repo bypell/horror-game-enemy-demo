@@ -1,5 +1,7 @@
 class_name StateMachine extends Node
 
+# slightly modified version of the one shown in this article: https://www.gdquest.com/tutorial/godot/design-patterns/finite-state-machine/
+
 @export var initial_state: State = null
 
 @onready var state: State = (func get_initial_state() -> State:

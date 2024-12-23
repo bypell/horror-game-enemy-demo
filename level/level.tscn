@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dfdjg6qbeunvr" path="res://player/player.tscn" id="3_pgwpv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3sk8d"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.0331065, 0.0488296, 0.0711122, 1)
+sky_horizon_color = Color(0.123827, 0.169478, 0.197249, 1)
+ground_bottom_color = Color(0.162207, 0.135703, 0.104918, 1)
+ground_horizon_color = Color(0.161276, 0.166142, 0.173823, 1)
 
 [sub_resource type="Sky" id="Sky_wj2yu"]
 sky_material = SubResource("ProceduralSkyMaterial_3sk8d")
@@ -33,6 +35,7 @@ environment = SubResource("Environment_hqlk8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.1
 shadow_enabled = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

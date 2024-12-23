@@ -1,8 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfdjg6qbeunvr"]
+[gd_scene load_steps=5 format=3 uid="uid://dfdjg6qbeunvr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="2_10sax"]
+[ext_resource type="AudioStream" uid="uid://b7dtejfcwpps4" path="res://sounds/138476__justinvoke__steptap.wav" id="2_ncqi0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bbutj"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n1j3r"]
+random_pitch = 1.2
+random_volume_offset_db = 4.0
+streams_count = 1
+stream_0/stream = ExtResource("2_ncqi0")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -15,3 +22,10 @@ shape = SubResource("CapsuleShape3D_bbutj")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.754935, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+spot_angle = 29.6482
+
+[node name="StepSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_n1j3r")
+volume_db = -10.0
