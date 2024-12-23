@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Enemy
 
+signal reached_player
+
 @export var max_spotting_distance := 50.0
 
 var _current_speed := 0.0
@@ -30,8 +32,10 @@ func _physics_process(_delta: float) -> void:
 	var where_to_look = navigation_agent.get_next_path_position()
 	where_to_look.y = global_position.y
 	if not where_to_look.is_equal_approx(global_position):
+		# if you want interpolation, look into quaternions and slerp()
+		# using look_at for simplicity
 		look_at(where_to_look)
-			
+		
 	velocity = direction * _current_speed
 	move_and_slide()
 

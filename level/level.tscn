@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://xh24bj7vyc42"]
+[gd_scene load_steps=9 format=3 uid="uid://xh24bj7vyc42"]
 
 [ext_resource type="PackedScene" uid="uid://c6rslwmxfavxo" path="res://level/model/level.glb" id="1_0nlc8"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_k0b2y"]
 [ext_resource type="PackedScene" uid="uid://ckkwdoj7vpe0d" path="res://enemy/enemy.tscn" id="2_xg7sp"]
 [ext_resource type="PackedScene" uid="uid://dfdjg6qbeunvr" path="res://player/player.tscn" id="3_pgwpv"]
 
@@ -25,6 +26,7 @@ cell_size = 0.1
 cell_height = 0.01
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_k0b2y")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hqlk8")

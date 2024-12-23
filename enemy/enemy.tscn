@@ -8,7 +8,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qjb43"]
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_5anih")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -22,14 +22,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2
 [node name="Skeleton3D" parent="EnemyModel/Armature" index="0"]
 bones/2/rotation = Quaternion(6.30291e-09, 3.17072e-08, -0.0528214, 0.998604)
 bones/4/rotation = Quaternion(6.30291e-09, -3.17072e-08, 0.0528214, 0.998604)
-bones/5/rotation = Quaternion(0.707107, 0, 0.707107, 0)
-bones/6/rotation = Quaternion(-5.09772e-10, 5.19975e-12, 0.0116608, 0.999932)
+bones/6/rotation = Quaternion(-5.09772e-10, 5.19886e-12, 0.0116608, 0.999932)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-1.76095e-07, -2.15234e-07, -0.692058, 0.721842)
-bones/8/rotation = Quaternion(0.707107, 0, -0.707107, 0)
-bones/9/rotation = Quaternion(-5.09772e-10, -5.19975e-12, -0.0116608, 0.999932)
+bones/9/rotation = Quaternion(-5.09772e-10, -5.19886e-12, -0.0116608, 0.999932)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(-1.76095e-07, 2.15234e-07, 0.692058, 0.721842)
 
 [node name="AnimationPlayer" parent="EnemyModel" index="1"]
 autoplay = "Idle"
@@ -41,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27178, 0)
 [node name="EyeRayCast" type="RayCast3D" parent="Eye"]
 unique_name_in_owner = true
 enabled = false
-target_position = Vector3(0, 0, -50)
+target_position = Vector3(0, 0, -1)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
